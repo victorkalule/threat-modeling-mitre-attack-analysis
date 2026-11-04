@@ -71,4 +71,4 @@ This GitHub portfolio is an **original summary** based on my TripleTen cybersecu
 
 This repository documents **analysis and recommendations only**. There is no evidence in the source deliverables that the proposed honeypots, SIEM detections, segmentation changes, or preventive controls were deployed or validated in production.
 
-Before public release, confirm that publishing original summaries and any supporting screenshots is permitted by the training provider. See [publication checklist](PUBLICATION_CHECKLIST.md).
+Original course templates and restricted source materials are not reproduced here. Supporting screenshots would be used only if authorized and sanitized.

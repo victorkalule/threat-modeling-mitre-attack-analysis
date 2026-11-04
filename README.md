@@ -1,74 +1,61 @@
-# Threat Modeling & MITRE ATT&CK Analysis
+# Threat Modeling with MITRE ATT&CK
 
-**Project type:** Simulated cybersecurity training case study  
-**Scenario:** Xibalba Interactive, a fictional gaming-services organization  
-**Focus:** Threat modeling, attack surface analysis, risk prioritization, MITRE ATT&CK mapping, and defensive strategy
+**Training case study | Attack surfaces, risk scoring, and defensive planning**
 
-## Project overview
+## About this project
 
-I developed a threat model for a simulated gaming company with public-facing game and API services, a stats website, a development environment, remote-access infrastructure, and a payment-processing environment. My analysis considered how valuable assets could be targeted, where security weaknesses created exposure, and which controls should be prioritized to reduce risk.
+For this project, I built a threat model for **Xibalba Interactive**, a fictional company running online gaming services. Its environment included public game servers, an API, a statistics website, development systems, VPN access, and a payment service.
 
-The work was a **documented risk assessment and proposed security roadmap**, not an investigation of a confirmed real-world breach or a deployment of production defenses.
+My task was to work out which assets mattered most, how someone might attack them, and where the company should focus its security efforts.
 
-## What I analyzed
+This was a hypothetical risk assessment, not an investigation of a breach that actually happened.
 
-- **Critical assets:** Proprietary source code, player account data, payment information, developer credentials, chat services, and security logs.
-- **Threat actors:** Cybercriminals, nation-state actors, and advanced persistent threat groups, with additional actor categories considered in the worksheet.
-- **Attack surface:** Public web applications, API and admin interfaces, exposed development assets, remote access, shared credentials, and network boundaries.
-- **Risk assessment:** Likelihood and impact ratings to prioritize exposures across the environment.
-- **Attack scenarios:** Web exploitation, credential compromise, lateral movement, theft of proprietary code or payment data, and disabling security logging.
+## What I looked at
 
-## Risk prioritization highlights
+I started with the systems and data that would be most damaging to lose or expose: game source code, player accounts, payment information, development credentials, chat-related data, and security logs.
 
-The supporting training worksheet rated likelihood and impact on 1–5 scales and **added** them to produce a total score out of 10. Selected high-priority scenarios were:
+I then considered possible attackers, including financially motivated cybercriminals, nation-state actors, and more persistent threat groups. From there, I mapped out potential attack paths involving public applications, stolen credentials, VPN access, and movement between network segments.
 
-| Asset / exposure | Likelihood | Impact | Worksheet score |
-| --- | --- | --- | --- |
+## Risk assessment
+
+The training worksheet rated likelihood and impact from **1 to 5** and added the two numbers together. These are estimates used for the exercise, not measured probabilities.
+
+| Risk scenario | Likelihood | Impact | Score |
+| --- | ---: | ---: | ---: |
 | Development server compromise | 5 | 5 | **10/10** |
-| Public administrative interface compromise | 5 | 5 | **10/10** |
-| Shared development/production database credentials | 5 | 5 | **10/10** |
-| Payment-processing server compromise | 4 | 5 | **9/10** |
+| Exposed administration interface | 5 | 5 | **10/10** |
+| Shared development and production database credentials | 5 | 5 | **10/10** |
+| Payment server compromise | 4 | 5 | **9/10** |
 | VPN gateway exploitation | 4 | 5 | **9/10** |
 
-These are **scenario-based estimates**, not measured exploitation probabilities or incident statistics.
+[Read more about the risk assessment](docs/risk-assessment-highlights.md).
 
-## Selected MITRE ATT&CK techniques
+## MITRE ATT&CK mapping
 
-The scenarios in my report referenced these techniques, among others:
+I used ATT&CK to describe how the modeled scenarios might unfold, including:
 
-- [T1190 — Exploit Public-Facing Application](https://attack.mitre.org/techniques/T1190/)
-- [T1078 — Valid Accounts](https://attack.mitre.org/techniques/T1078/)
-- [T1133 — External Remote Services](https://attack.mitre.org/techniques/T1133/)
-- [T1552 — Unsecured Credentials](https://attack.mitre.org/techniques/T1552/)
-- [T1021 — Remote Services](https://attack.mitre.org/techniques/T1021/)
-- [T1041 — Exfiltration Over C2 Channel](https://attack.mitre.org/techniques/T1041/)
-- [T1562 — Impair Defenses](https://attack.mitre.org/techniques/T1562/)
+- **T1190:** Exploit Public-Facing Application
+- **T1078:** Valid Accounts
+- **T1133:** External Remote Services
+- **T1552:** Unsecured Credentials
+- **T1021:** Remote Services
+- **T1041:** Exfiltration Over C2 Channel
+- **T1562:** Impair Defenses
 
-**Important:** These are plausible attack techniques used for threat modeling. They are **not evidence that any attack occurred** against a real organization.
+These techniques describe possible attacker behavior in the scenario, not observed attacks.
 
-## Proposed defensive strategy
+## What I recommended
 
-I evaluated three complementary sets of recommendations:
+I organized the recommendations around three areas:
 
-1. **Visibility and monitoring:** Centralize web/application, firewall, and sensitive-file access logs; monitor for suspicious authentication, exploitation, lateral movement, and tampering with defenses.
-2. **Deception and early warning:** Propose isolated decoys, including a fake source-code repository, a simulated payment service, and an administrative-interface tripwire.
-3. **Prevention and hardening:** Patch exposed applications, address misconfigurations, strengthen segmentation, protect credentials in a secrets manager, and audit changes to security tooling.
+1. **Better visibility:** Collect web, application, firewall, and file-access logs so suspicious activity is easier to spot.
+2. **Early warning:** Consider isolated decoys, such as a fake source-code repository or administration page, to help identify unauthorized probing.
+3. **Fewer opportunities to attack:** Patch exposed applications, limit access between sensitive environments, improve secrets management, and monitor changes to security tools.
 
-See [risk assessment highlights](docs/risk-assessment-highlights.md) and [proposed defensive roadmap](docs/defensive-roadmap.md).
+[Read the proposed defensive roadmap](docs/defensive-roadmap.md).
 
-## Skills demonstrated
+## What I learned
 
-- Asset inventory and threat actor profiling
-- Structured likelihood/impact risk assessment
-- Attack surface mapping and scenario development
-- MITRE ATT&CK technique mapping
-- Defensive prioritization with business and technical stakeholders in mind
-- Writing an actionable security improvement roadmap
+I got practice connecting technical weaknesses to possible business consequences and deciding which risks deserved attention first. The biggest lesson was that a useful threat model should lead to specific recommendations, not just a list of things that could go wrong.
 
-## Source and limitations
-
-This GitHub portfolio is an **original summary** based on my TripleTen cybersecurity training deliverables. It excludes the original course template, live or private credentials, and detailed environment identifiers. The source report contains some unfilled template sections, which are intentionally not presented as completed work.
-
-This repository documents **analysis and recommendations only**. There is no evidence in the source deliverables that the proposed honeypots, SIEM detections, segmentation changes, or preventive controls were deployed or validated in production.
-
-Original course templates and restricted source materials are not reproduced here. Supporting screenshots would be used only if authorized and sanitized.
+This is my own write-up of a TripleTen training exercise. I haven't reproduced the original worksheet or course templates, and I haven't claimed the recommended defenses were deployed.
